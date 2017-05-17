@@ -2,13 +2,14 @@
 
 A labyrinth solving AI problem. Solved with various algorithms: Backtrack, DFS, BFS, A-Algorithm.
 
-The aim is to move our player(green circle) to the finishing point(pink square). The rules are
+ The aim is to move our player(green circle) to the finishing point(pink square). The rules are
 the following:
-- The player can move horizontally and vertically, one step at a time, but not allowed to step
-on black cells.
-- The triangles at the sides of the board are death-ray cannons. If a cannon is active, the player
-dies if it stands in the row/column of the active death-ray cannon.
-- Initially the white cannons are active, then in the next step the black ones
+- The player can move horizontally and vertically.
+- In each step, it is mandatory to move 2 or 3 cell long distance.
+- The player starts with step size: 2 cells.
+- The step size can only change if the player moves to a cell marked by a circle. Then if the step
+size was 2 it changes to 3, if it was 3 it changes to 2.
+- The player cannot step on any of the black cells.
 
 ![alt text](startState.png)
 
