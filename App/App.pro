@@ -27,11 +27,13 @@ SOURCES += main.cpp\
         app.cpp \
     statespace.cpp \
     filehelper.cpp \
-    operator.cpp
+    operator.cpp \
+    node.cpp
 
 HEADERS  += app.h \
     statespace.h \
     filehelper.h \
-    operator.h
+    operator.h \
+    node.h
 
 FORMS    += app.ui

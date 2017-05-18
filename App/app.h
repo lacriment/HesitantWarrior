@@ -32,6 +32,16 @@ private slots:
 
     void on_btnStepForward_clicked();
 
+    void on_App_destroyed();
+
+    void on_btnRight_clicked();
+
+    void on_btnLeft_clicked();
+
+    void on_btnUp_clicked();
+
+    void on_btnDown_clicked();
+
 private:
     Ui::App *ui;
     QGraphicsScene *scene;
@@ -40,6 +50,7 @@ private:
     QGraphicsTextItem *text;
     QList<StateSpace*> solutionStates;
     int stepIndex;
+    StateSpace *startState;
 
 };
 

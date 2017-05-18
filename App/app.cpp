@@ -4,6 +4,8 @@
 #include "filehelper.h"
 #include <QDebug>
 
+#include "operator.h"
+
 App::App(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::App)
@@ -11,7 +13,7 @@ App::App(QWidget *parent) :
     ui->setupUi(this);
     stepIndex = 0;
 
-    StateSpace *startState = new StateSpace();
+    startState = new StateSpace();
     // Read Initial State from the File
     QString boardMatrixRaw = FileHelper::fileToString("board.matrix");
     int x = 0;
@@ -103,4 +105,57 @@ void App::on_btnStepForward_clicked()
     if (stepIndex == solutionStates.count() - 1 || solutionStates.count() < 1) return;
     stepIndex++;
     DrawGameState(solutionStates[stepIndex]);
+}
+
+void App::on_App_destroyed()
+{
+
+}
+
+void App::on_btnRight_clicked()
+{
+    Operator *o = new Operator(Direction::right);
+    StateSpace *newState = new StateSpace();
+    if (o->precondition(startState)) {
+        newState = o->apply(startState);
+        DrawGameState(newState);
+    };
+    qDebug() << newState->getPlayer().position;
+    qDebug() << newState->getPlayer().speed;
+}
+
+void App::on_btnLeft_clicked()
+{
+    Operator *o = new Operator(Direction::left);
+    StateSpace *newState = new StateSpace();
+    if (o->precondition(startState)) {
+        newState = o->apply(startState);
+        DrawGameState(newState);
+    };
+    qDebug() << newState->getPlayer().position;
+    qDebug() << newState->getPlayer().speed;
+}
+
+void App::on_btnUp_clicked()
+{
+    Operator *o = new Operator(Direction::up);
+    StateSpace *newState = new StateSpace();
+    if (o->precondition(startState)) {
+        newState = o->apply(startState);
+        DrawGameState(newState);
+    };
+    qDebug() << newState->getPlayer().position;
+    qDebug() << newState->getPlayer().speed;
+}
+
+void App::on_btnDown_clicked()
+{
+    Operator *o = new Operator(Direction::down);
+    StateSpace *newState = new StateSpace();
+    if (o->precondition(startState)) {
+        newState = o->apply(startState);
+        DrawGameState(newState);
+    };
+    qDebug() << newState->getPlayer().position;
+    qDebug() << newState->getPlayer().speed;
 }

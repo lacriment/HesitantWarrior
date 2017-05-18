@@ -15,6 +15,13 @@ enum class State {
     block   // banned area
 };
 
+enum class Direction {
+    up,
+    right,
+    down,
+    left
+};
+
 class StateSpace : public QObject
 {
     Q_OBJECT
@@ -34,7 +41,7 @@ public:
     void setPlayerPosition(int x, int y);
     void setFinishingPosition(int x, int y);
     void setPlayerSpeed(int s);
-    bool hasArrived();
+    bool isItGoal();
 
 signals:
 

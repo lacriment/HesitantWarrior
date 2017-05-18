@@ -23,7 +23,7 @@ void StateSpace::setPlayerSpeed(int s)
 }
 
 // Has the player arrived to the finishing point?
-bool StateSpace::hasArrived()
+bool StateSpace::isItGoal()
 {
     return finishPoint.first == player.position.first &&
             finishPoint.second == player.position.second;
