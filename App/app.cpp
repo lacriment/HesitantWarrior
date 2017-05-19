@@ -13,30 +13,30 @@ App::App(QWidget *parent) :
     ui->setupUi(this);
     stepIndex = 0;
 
-    startState = new StateSpace();
+    currentState = new StateSpace();
     // Read Initial State from the File
     QString boardMatrixRaw = FileHelper::fileToString("board.matrix");
     int x = 0;
     int y = 0;
     for (int i = 0; i < boardMatrixRaw.size(); ++i) {
         if (boardMatrixRaw.at(i) == "S") {
-            startState->setBoardElement(x,y, State::shift);
+            currentState->setBoardElement(x,y, State::shift);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "E") {
-            startState->setBoardElement(x, y, State::empty);
+            currentState->setBoardElement(x, y, State::empty);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "B") {
-            startState->setBoardElement(x, y, State::block);
+            currentState->setBoardElement(x, y, State::block);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "P") {
-            startState->setPlayerPosition(x, y);
+            currentState->setPlayerPosition(x, y);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "F") {
-            startState->setFinishingPosition(x, y);
+            currentState->setFinishingPosition(x, y);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "\xa") {
@@ -45,7 +45,7 @@ App::App(QWidget *parent) :
         }
 
     }
-    DrawGameState(startState);
+    DrawGameState(currentState);
 }
 
 App::~App()
@@ -115,47 +115,47 @@ void App::on_App_destroyed()
 void App::on_btnRight_clicked()
 {
     Operator *o = new Operator(Direction::right);
-    StateSpace *newState = new StateSpace();
-    if (o->precondition(startState)) {
-        newState = o->apply(startState);
-        DrawGameState(newState);
+    if (o->precondition(currentState)) {
+        o->apply(currentState);
+        DrawGameState(currentState);
     };
-    qDebug() << newState->getPlayer().position;
-    qDebug() << newState->getPlayer().speed;
+    qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
+                currentState->getPlayer().position.second << ")";
+    qDebug() << "Speed : " << currentState->getPlayer().speed;
 }
 
 void App::on_btnLeft_clicked()
 {
     Operator *o = new Operator(Direction::left);
-    StateSpace *newState = new StateSpace();
-    if (o->precondition(startState)) {
-        newState = o->apply(startState);
-        DrawGameState(newState);
+    if (o->precondition(currentState)) {
+        o->apply(currentState);
+        DrawGameState(currentState);
     };
-    qDebug() << newState->getPlayer().position;
-    qDebug() << newState->getPlayer().speed;
+    qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
+                currentState->getPlayer().position.second << ")";
+    qDebug() << "Speed : " << currentState->getPlayer().speed;
 }
 
 void App::on_btnUp_clicked()
 {
     Operator *o = new Operator(Direction::up);
-    StateSpace *newState = new StateSpace();
-    if (o->precondition(startState)) {
-        newState = o->apply(startState);
-        DrawGameState(newState);
+    if (o->precondition(currentState)) {
+        o->apply(currentState);
+        DrawGameState(currentState);
     };
-    qDebug() << newState->getPlayer().position;
-    qDebug() << newState->getPlayer().speed;
+    qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
+                currentState->getPlayer().position.second << ")";
+    qDebug() << "Speed : " << currentState->getPlayer().speed;
 }
 
 void App::on_btnDown_clicked()
 {
     Operator *o = new Operator(Direction::down);
-    StateSpace *newState = new StateSpace();
-    if (o->precondition(startState)) {
-        newState = o->apply(startState);
-        DrawGameState(newState);
+    if (o->precondition(currentState)) {
+        o->apply(currentState);
+        DrawGameState(currentState);
     };
-    qDebug() << newState->getPlayer().position;
-    qDebug() << newState->getPlayer().speed;
+    qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
+                currentState->getPlayer().position.second << ")";
+    qDebug() << "Speed : " << currentState->getPlayer().speed;
 }

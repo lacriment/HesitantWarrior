@@ -33,6 +33,7 @@ private:
 public:
     explicit StateSpace(QObject *parent = 0);
     State getBoardElement(int x, int y);
+    State getBoardElement(QPair<int, int> pos);
     void setBoardElement(int x, int y, State value);
 
     QPair<int, int> getFinishPoint() const;

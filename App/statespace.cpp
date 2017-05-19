@@ -45,6 +45,11 @@ State StateSpace::getBoardElement(int x, int y)
     return this->board[x][y];
 }
 
+State StateSpace::getBoardElement(QPair<int, int> pos)
+{
+    return this->board[pos.first][pos.second];
+}
+
 void StateSpace::setBoardElement(int x, int y, State value)
 {
     this->board[x][y] = value;

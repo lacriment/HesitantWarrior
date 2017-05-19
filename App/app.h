@@ -50,7 +50,7 @@ private:
     QGraphicsTextItem *text;
     QList<StateSpace*> solutionStates;
     int stepIndex;
-    StateSpace *startState;
+    StateSpace *currentState;
 
 };
 
