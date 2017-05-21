@@ -16,6 +16,12 @@ StateSpace *Node::getCurrentState() const
     return currentState;
 }
 
+bool Node::equals(Node *node)
+{
+    return node->currentState->equals(this->currentState) &&
+            node->getOperatorIndex() == this->operatorIndex;
+}
+
 Node::Node(QObject *parent) : QObject(parent)
 {
 

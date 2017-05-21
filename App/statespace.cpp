@@ -29,6 +29,15 @@ bool StateSpace::isItGoal()
             finishPoint.second == player.position.second;
 }
 
+bool StateSpace::equals(StateSpace *state)
+{
+    if (state->player.position == player.position
+            && state->getPlayer().speed == player.speed) {
+        return true;
+    }
+    return false;
+}
+
 // Initilize the starting point and finishing point
 StateSpace::StateSpace(QObject *parent) : QObject(parent)
 {

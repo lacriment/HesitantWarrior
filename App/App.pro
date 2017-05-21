@@ -28,12 +28,14 @@ SOURCES += main.cpp\
     statespace.cpp \
     filehelper.cpp \
     operator.cpp \
-    node.cpp
+    node.cpp \
+    treenode.cpp
 
 HEADERS  += app.h \
     statespace.h \
     filehelper.h \
     operator.h \
-    node.h
+    node.h \
+    treenode.h
 
 FORMS    += app.ui

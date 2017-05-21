@@ -45,6 +45,7 @@ public:
     void setFinishingPosition(int x, int y);
     void setPlayerSpeed(int s);
     bool isItGoal();
+    bool equals(StateSpace *state);
 
 signals:
 

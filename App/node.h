@@ -19,6 +19,8 @@ public:
 
     StateSpace *getCurrentState() const;
 
+    bool equals(Node *node);
+
 signals:
 
 public slots:
