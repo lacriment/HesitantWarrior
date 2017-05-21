@@ -42,6 +42,8 @@ private slots:
 
     void on_btnDown_clicked();
 
+    void on_btnBFS_clicked();
+
 private:
     Ui::App *ui;
     QGraphicsScene *scene;

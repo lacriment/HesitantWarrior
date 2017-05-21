@@ -24,7 +24,7 @@ Operator::Operator(Direction dir)
     }
 }
 
-void *Operator::apply(StateSpace *currentState)
+StateSpace *Operator::apply(StateSpace *currentState)
 {
     int x = currentState->getPlayer().position.first;
     int y = currentState->getPlayer().position.second;
@@ -41,6 +41,7 @@ void *Operator::apply(StateSpace *currentState)
         else
             currentState->setPlayerSpeed(3);
     }
+    return currentState;
 }
 
 #include <QDebug>

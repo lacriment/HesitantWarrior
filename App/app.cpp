@@ -159,3 +159,8 @@ void App::on_btnDown_clicked()
                 currentState->getPlayer().position.second << ")";
     qDebug() << "Speed : " << currentState->getPlayer().speed;
 }
+
+void App::on_btnBFS_clicked()
+{
+
+}

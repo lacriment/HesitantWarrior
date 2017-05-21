@@ -17,7 +17,7 @@ private:
 public:
     explicit Operator(QObject *parent = 0);
     Operator(Direction dir);
-    void *apply(StateSpace *currentState);
+    StateSpace *apply(StateSpace *currentState);
     bool precondition(StateSpace *currentState);
 
 

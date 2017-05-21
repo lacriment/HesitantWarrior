@@ -29,13 +29,15 @@ SOURCES += main.cpp\
     filehelper.cpp \
     operator.cpp \
     node.cpp \
-    treenode.cpp
+    treenode.cpp \
+    breadthfirstsearch.cpp
 
 HEADERS  += app.h \
     statespace.h \
     filehelper.h \
     operator.h \
     node.h \
-    treenode.h
+    treenode.h \
+    breadthfirstsearch.h
 
 FORMS    += app.ui
