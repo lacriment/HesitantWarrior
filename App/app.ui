@@ -38,19 +38,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnBackTrack">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>500</y>
-     <width>80</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Backtrack</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
@@ -93,9 +80,9 @@
   <widget class="QPushButton" name="btnBFS">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>10</x>
      <y>500</y>
-     <width>80</width>
+     <width>41</width>
      <height>26</height>
     </rect>
    </property>
@@ -103,25 +90,12 @@
     <string>BFS</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnDFS">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>500</y>
-     <width>80</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>DFS</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnA">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>60</x>
      <y>500</y>
-     <width>80</width>
+     <width>31</width>
      <height>26</height>
     </rect>
    </property>
@@ -179,6 +153,32 @@
    </property>
    <property name="text">
     <string>▼</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblStatus">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>500</y>
+     <width>231</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCountOfSteps">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>500</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

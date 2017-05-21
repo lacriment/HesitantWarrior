@@ -4,7 +4,7 @@
 #include <QList>
 #include <QQueue>
 #include "statespace.h"
-#include "treenode.h"
+#include "node.h"
 #include "operator.h"
 
 class BreadthFirstSearch

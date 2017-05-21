@@ -5,13 +5,13 @@
 #include <QDebug>
 
 #include "operator.h"
+#include "breadthfirstsearch.h"
 
 App::App(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::App)
 {
     ui->setupUi(this);
-    stepIndex = 0;
 
     currentState = new StateSpace();
     // Read Initial State from the File
@@ -83,11 +83,6 @@ void App::DrawGameState(StateSpace *currentState)
                                 currentState->getFinishPoint().second*60+15, 30, 30 , blackPen, Qt::magenta);
 }
 
-void App::on_btnBackTrack_clicked()
-{
-
-}
-
 void App::on_btnQuit_clicked()
 {
     this->close();
@@ -97,14 +92,16 @@ void App::on_btnStepBack_clicked()
 {
     if (stepIndex == 0) return;
     stepIndex--;
-    DrawGameState(solutionStates[stepIndex]);
+    DrawGameState(solutionStates->at(stepIndex));
+    qDebug() << stepIndex;
 }
 
 void App::on_btnStepForward_clicked()
 {
-    if (stepIndex == solutionStates.count() - 1 || solutionStates.count() < 1) return;
+    if (stepIndex == solutionStates->count() - 1 || solutionStates->count() < 1) return;
     stepIndex++;
-    DrawGameState(solutionStates[stepIndex]);
+    DrawGameState(solutionStates->at(stepIndex));
+    qDebug() << stepIndex;
 }
 
 void App::on_App_destroyed()
@@ -162,5 +159,15 @@ void App::on_btnDown_clicked()
 
 void App::on_btnBFS_clicked()
 {
-
+    BreadthFirstSearch *bfs = new BreadthFirstSearch();
+    solutionStates = bfs->search(this->currentState);
+    if (solutionStates->count() == 0) {
+        ui->lblStatus->setText("No solution!");
+    }
+    else {
+        stepIndex = 0;
+        ui->lblCountOfSteps->setText(QString::number(solutionStates->count()-1));
+        DrawGameState(solutionStates->at(0));
+    }
+    qDebug() << "solution : " << solutionStates->count();
 }

@@ -24,8 +24,6 @@ public:
 
 private slots:
 
-    void on_btnBackTrack_clicked();
-
     void on_btnQuit_clicked();
 
     void on_btnStepBack_clicked();
@@ -50,7 +48,7 @@ private:
     QGraphicsEllipseItem *ellipse;
     QGraphicsRectItem *rectangle;
     QGraphicsTextItem *text;
-    QList<StateSpace*> solutionStates;
+    QList<StateSpace*> *solutionStates;
     int stepIndex;
     StateSpace *currentState;
 

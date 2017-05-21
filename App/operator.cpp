@@ -44,11 +44,8 @@ StateSpace *Operator::apply(StateSpace *currentState)
     return currentState;
 }
 
-#include <QDebug>
-
 bool Operator::precondition(StateSpace *currentState)
 {
-    qDebug() << dirCartesian;
     int x = currentState->getPlayer().position.first;
     int y = currentState->getPlayer().position.second;
     int speed = currentState->getPlayer().speed;

@@ -4,35 +4,40 @@ BreadthFirstSearch::BreadthFirstSearch()
 {
 
 }
+#include <QDebug>
 
 QList<StateSpace *> *BreadthFirstSearch::search(StateSpace *startState)
 {
-    TreeNode *startNode = new TreeNode(startState, nullptr);
-    QList<TreeNode*> *closedNodes = new QList<TreeNode*>();
-    QQueue<TreeNode*> *openNodes = new QQueue<TreeNode*>();
-    openNodes->enqueue(startNode);
-    TreeNode *actNode = nullptr;
+    Node *startNode = new Node(startState, nullptr);
+    QList<Node*> *explored = new QList<Node*>();
+    QQueue<Node*> *frontier = new QQueue<Node*>();
+    Node *currentNode = new Node();
+    frontier->enqueue(startNode);
 
-    while ( (openNodes->count() > 0)
-            && !((actNode = openNodes->dequeue())->getCurrentState()->isItGoal())) {
+    while (frontier->length() > 0) {
+        currentNode = frontier->dequeue();
+        if (currentNode->getCurrentState()->isItGoal()) {
+            break;
+        }
         Direction dirs[4] = { Direction::up, Direction::right, Direction::down, Direction::left };
         for (Direction dir: dirs) {
             Operator *o = new Operator(dir);
-            if (o->precondition(actNode->getCurrentState())) {
-                TreeNode *newNode = new TreeNode(o->apply(actNode->getCurrentState()), actNode);
-                if (!openNodes->contains(newNode) && !closedNodes->contains(newNode)) {
-                    openNodes->enqueue(newNode);
+            if (o->precondition(currentNode->getCurrentState())) {
+                Node *newNode = new Node(o->apply(currentNode->getCurrentState()), currentNode);
+                if (!explored->contains(newNode) && !frontier->contains(newNode)) {
+                    qDebug() << "hello";
+                    frontier->enqueue(newNode);
                 }
             }
-            delete o;
         }
-        closedNodes->append(actNode);
+        explored->append(currentNode);
     }
+
     QList<StateSpace*> *solution = new QList<StateSpace*>();
-    if (openNodes->count() > 0) {
-        TreeNode *act = actNode;
-        for (;  act != nullptr; act = act->getParent()) {
-            solution->append(act->getCurrentState());
+    if (frontier->count() > 0) {
+        Node *curr = currentNode;
+        for (;  curr != nullptr; curr = curr->getParent()) {
+            solution->append(curr->getCurrentState());
         }
     }
     return solution;

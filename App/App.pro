@@ -29,7 +29,6 @@ SOURCES += main.cpp\
     filehelper.cpp \
     operator.cpp \
     node.cpp \
-    treenode.cpp \
     breadthfirstsearch.cpp
 
 HEADERS  += app.h \
@@ -37,7 +36,6 @@ HEADERS  += app.h \
     filehelper.h \
     operator.h \
     node.h \
-    treenode.h \
     breadthfirstsearch.h
 
 FORMS    += app.ui

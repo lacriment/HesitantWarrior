@@ -1,34 +1,23 @@
 #include "node.h"
 
 
-ushort Node::getOperatorIndex() const
-{
-    return operatorIndex;
-}
-
-void Node::setOperatorIndex(const ushort &value)
-{
-    operatorIndex = value;
-}
-
 StateSpace *Node::getCurrentState() const
 {
     return currentState;
 }
 
-bool Node::equals(Node *node)
+Node *Node::getParent() const
 {
-    return node->currentState->equals(this->currentState) &&
-            node->getOperatorIndex() == this->operatorIndex;
+    return parent;
 }
 
 Node::Node(QObject *parent) : QObject(parent)
 {
-
+    
 }
 
-Node::Node(StateSpace *state, int index)
+Node::Node(StateSpace *state, Node *node)
 {
     this->currentState = state;
-    this->operatorIndex = index;
+    this->parent = node;
 }
