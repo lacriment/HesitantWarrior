@@ -1,5 +1,7 @@
 #include "operator.h"
 
+const Direction Operator::dirs[4] = { Direction::up, Direction::right, Direction::down, Direction::left };
+
 Operator::Operator(QObject *parent) : QObject(parent)
 {
 

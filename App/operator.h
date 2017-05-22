@@ -19,6 +19,7 @@ public:
     Operator(Direction dir);
     StateSpace *apply(StateSpace *currentState);
     bool precondition(StateSpace *currentState);
+    const static Direction dirs[4];
 
 
 signals:
