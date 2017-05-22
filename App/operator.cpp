@@ -26,22 +26,26 @@ Operator::Operator(Direction dir)
 
 StateSpace *Operator::apply(StateSpace *currentState)
 {
-    int x = currentState->getPlayer().position.first;
-    int y = currentState->getPlayer().position.second;
-    int speed = currentState->getPlayer().speed;
+    StateSpace *newState = new StateSpace();
+    newState->setBoard(currentState->getBoard());
+    newState->setPlayer(currentState->getPlayer());
+    newState->setFinishPoint(currentState->getFinishPoint());
+    int x = newState->getPlayer().position.first;
+    int y = newState->getPlayer().position.second;
+    int speed = newState->getPlayer().speed;
 
     // Apply
-    currentState->setPlayerPosition( x + ( dirCartesian.first * speed ),
+    newState->setPlayerPosition( x + ( dirCartesian.first * speed ),
                                  y + ( dirCartesian.second * speed) );
 
     //check is it the point of change for speed -- current state
-    if (currentState->getBoardElement(currentState->getPlayer().position) == State::shift) {
+    if (newState->getBoardElement(newState->getPlayer().position) == State::shift) {
         if (speed == 3)
-            currentState->setPlayerSpeed(2);
+            newState->setPlayerSpeed(2);
         else
-            currentState->setPlayerSpeed(3);
+            newState->setPlayerSpeed(3);
     }
-    return currentState;
+    return newState;
 }
 
 bool Operator::precondition(StateSpace *currentState)

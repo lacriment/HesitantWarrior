@@ -16,6 +16,8 @@ QList<StateSpace *> *BreadthFirstSearch::search(StateSpace *startState)
 
     while (frontier->length() > 0) {
         currentNode = frontier->dequeue();
+        qDebug() << "Cur Pos:" << currentNode->getCurrentState()->getPlayer().position;
+        qDebug() << "Cur Speed:" << currentNode->getCurrentState()->getPlayer().speed;
         if (currentNode->getCurrentState()->isItGoal()) {
             break;
         }
@@ -23,13 +25,19 @@ QList<StateSpace *> *BreadthFirstSearch::search(StateSpace *startState)
         for (Direction dir: dirs) {
             Operator *o = new Operator(dir);
             if (o->precondition(currentNode->getCurrentState())) {
+                qDebug() << "Dir      :" << static_cast<int>(dir);
+                qDebug() << "Cur Pos  :" << currentNode->getCurrentState()->getPlayer().position;
+                qDebug() << "Cur Speed:" << currentNode->getCurrentState()->getPlayer().speed;
                 Node *newNode = new Node(o->apply(currentNode->getCurrentState()), currentNode);
                 if (!explored->contains(newNode) && !frontier->contains(newNode)) {
-                    qDebug() << "hello";
+                    explored->append(newNode);
+                    newNode->setParent(currentNode);
                     frontier->enqueue(newNode);
                 }
             }
+            delete o;
         }
+        qDebug() << "-------------";
         explored->append(currentNode);
     }
 

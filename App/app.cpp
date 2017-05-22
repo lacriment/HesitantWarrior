@@ -32,11 +32,11 @@ App::App(QWidget *parent) :
             x++;
         }
         else if (boardMatrixRaw.at(i) == "P") {
-            currentState->setPlayerPosition(x, y);
+            currentState->setFinishPoint(x, y);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "F") {
-            currentState->setFinishingPosition(x, y);
+            currentState->setFinishPoint(x, y);
             x++;
         }
         else if (boardMatrixRaw.at(i) == "\xa") {
@@ -112,9 +112,11 @@ void App::on_App_destroyed()
 void App::on_btnRight_clicked()
 {
     Operator *o = new Operator(Direction::right);
+    StateSpace *state = new StateSpace();
     if (o->precondition(currentState)) {
-        o->apply(currentState);
-        DrawGameState(currentState);
+        state = o->apply(currentState);
+        DrawGameState(state);
+        currentState = state;
     };
     qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
                 currentState->getPlayer().position.second << ")";
@@ -124,9 +126,11 @@ void App::on_btnRight_clicked()
 void App::on_btnLeft_clicked()
 {
     Operator *o = new Operator(Direction::left);
+    StateSpace *state = new StateSpace();
     if (o->precondition(currentState)) {
-        o->apply(currentState);
-        DrawGameState(currentState);
+        state = o->apply(currentState);
+        DrawGameState(state);
+        currentState = state;
     };
     qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
                 currentState->getPlayer().position.second << ")";
@@ -136,9 +140,11 @@ void App::on_btnLeft_clicked()
 void App::on_btnUp_clicked()
 {
     Operator *o = new Operator(Direction::up);
+    StateSpace *state = new StateSpace();
     if (o->precondition(currentState)) {
-        o->apply(currentState);
-        DrawGameState(currentState);
+        state = o->apply(currentState);
+        DrawGameState(state);
+        currentState = state;
     };
     qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
                 currentState->getPlayer().position.second << ")";
@@ -148,9 +154,11 @@ void App::on_btnUp_clicked()
 void App::on_btnDown_clicked()
 {
     Operator *o = new Operator(Direction::down);
+    StateSpace *state = new StateSpace();
     if (o->precondition(currentState)) {
-        o->apply(currentState);
-        DrawGameState(currentState);
+        state = o->apply(currentState);
+        DrawGameState(state);
+        currentState = state;
     };
     qDebug() << "Pos   : (" << currentState->getPlayer().position.first << ", " <<
                 currentState->getPlayer().position.second << ")";

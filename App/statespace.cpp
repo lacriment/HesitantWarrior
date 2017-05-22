@@ -5,18 +5,6 @@ Player StateSpace::getPlayer() const
     return player;
 }
 
-void StateSpace::setPlayerPosition(int x, int y)
-{
-    player.position.first = x;
-    player.position.second = y;
-}
-
-void StateSpace::setFinishingPosition(int x, int y)
-{
-    finishPoint.first = x;
-    finishPoint.second = y;
-}
-
 void StateSpace::setPlayerSpeed(int s)
 {
     this->player.speed = s;
@@ -39,6 +27,39 @@ bool StateSpace::equals(StateSpace *state)
 }
 
 // Initilize the starting point and finishing point
+void StateSpace::setPlayer(const Player &value)
+{
+    player = value;
+}
+
+void StateSpace::setPlayerPosition(int x, int y)
+{
+    this->player.position = qMakePair(x, y);
+}
+
+std::array<std::array<State, 8>, 8> StateSpace::getBoard() const
+{
+    return board;
+}
+
+void StateSpace::setBoard(const std::array<std::array<State, 8>, 8> &value)
+{
+    board = value;
+}
+
+
+void StateSpace::setFinishPoint(QPair<int, int> point)
+{
+    this->finishPoint= point;
+}
+
+void StateSpace::setFinishPoint(int x, int y)
+{
+    this->finishPoint.first = x;
+    this->finishPoint.second = y;
+}
+
+
 StateSpace::StateSpace(QObject *parent) : QObject(parent)
 {
     this->player.speed = 2;

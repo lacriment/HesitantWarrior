@@ -11,6 +11,7 @@ Node *Node::getParent() const
     return parent;
 }
 
+
 Node::Node(QObject *parent) : QObject(parent)
 {
     
