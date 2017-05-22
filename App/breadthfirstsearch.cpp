@@ -37,7 +37,6 @@ QList<StateSpace *> *BreadthFirstSearch::search(StateSpace *startState)
             }
             delete o;
         }
-        qDebug() << "-------------";
         explored->append(currentNode);
     }
 
@@ -45,7 +44,7 @@ QList<StateSpace *> *BreadthFirstSearch::search(StateSpace *startState)
     if (frontier->count() > 0) {
         Node *curr = currentNode;
         for (;  curr != nullptr; curr = curr->getParent()) {
-            solution->append(curr->getCurrentState());
+            solution->push_front(curr->getCurrentState());
         }
     }
     return solution;

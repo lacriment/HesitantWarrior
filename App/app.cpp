@@ -81,6 +81,11 @@ void App::DrawGameState(StateSpace *currentState)
                                 currentState->getPlayer().position.second*60+15, 30, 30 , blackPen, Qt::darkGreen);
     rectangle = scene->addRect(currentState->getFinishPoint().first*60+15,
                                 currentState->getFinishPoint().second*60+15, 30, 30 , blackPen, Qt::magenta);
+
+    if (currentState->getFinishPoint() == currentState->getPlayer().position) {
+        rectangle = scene->addRect(currentState->getFinishPoint().first*60+10,
+                                    currentState->getFinishPoint().second*60+10, 40, 40 , blackPen, Qt::yellow);
+    }
 }
 
 void App::on_btnQuit_clicked()
