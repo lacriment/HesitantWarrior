@@ -5,9 +5,9 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsItem>
-#include "statespace.h"
-
 #include <QList>
+
+#include "statespace.h"
 
 namespace Ui {
 class App;
@@ -51,6 +51,9 @@ private:
     QList<StateSpace*> *solutionStates;
     int stepIndex;
     StateSpace *currentState;
+
+protected:
+    void keyPressEvent(QKeyEvent *e);
 
 };
 

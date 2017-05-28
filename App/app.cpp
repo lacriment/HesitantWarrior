@@ -1,9 +1,10 @@
 #include "app.h"
 #include "ui_app.h"
 
-#include "filehelper.h"
 #include <QDebug>
+#include <QKeyEvent>
 
+#include "filehelper.h"
 #include "operator.h"
 #include "breadthfirstsearch.h"
 
@@ -183,4 +184,20 @@ void App::on_btnBFS_clicked()
         DrawGameState(solutionStates->at(0));
     }
     qDebug() << "solution : " << solutionStates->count();
+}
+
+void App::keyPressEvent(QKeyEvent *e)
+{
+    if (e->key() == Qt::Key_D) {
+        on_btnRight_clicked();
+    }
+    else if (e->key() == Qt::Key_A) {
+        on_btnLeft_clicked();
+    }
+    else if (e->key() == Qt::Key_W) {
+        on_btnUp_clicked();
+    }
+    else if (e->key() == Qt::Key_S) {
+        on_btnDown_clicked();
+    }
 }
